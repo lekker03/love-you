@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poetsen+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* เพิ่มขนาดของอีโมจิหัวใจในกล่อง */
+        .emoji {
+            font-size: 3rem;
+        }
+
+        .poetsen-one {
+            font-family: "Poetsen One", sans-serif;
+        }
+
+        .pacifico {
+            font-family: "Pacifico", cursive;
+        }
+
+        /* กล่องตกแต่ง */
+        .box,
+        .box2 {
+            width: 500px;
+            height: 250px;
+            background-color: #ffd4d4;
+            /* พื้นหลัง */
+            border-radius: 15px;
+            /* ขอบมน */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* เงาของกล่อง */
+        }
+
+        .box:hover,
+        .box2:hover {
+            transform: scale(1.05);
+            /* เพิ่มขนาดกล่องเมื่อเอามือไปวาง */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            /* ขยายเงาเมื่อ hover */
+        }
+
+        /* เพิ่มระยะห่างจากขอบ */
+        .content-container {
+            margin-top: 100px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        /* ปรับแต่งลิงก์ */
+        a {
+            text-decoration: none;
+            /* ลบขีดเส้นใต้ */
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0 h-screen w-screen flex items-center justify-center overflow-hidden relative">
+    <!-- Background Image -->
+    <img src="/img/bg.jpg" alt="" class="w-full h-full object-cover absolute inset-0 z-0">
+
+    <!-- Centered Title -->
+    <h1 class="text-5xl poetsen-one text-rose-800 z-10 absolute top-20 left-0 right-0 text-center">Memory Lane of me and
+        you.</h1>
+    <h3 class="text-2xl mt-5 pacifico text-rose-800 z-10 absolute top-32 left-0 right-0 text-center">love you everyday
+    </h3>
+
+    <!-- Back Button -->
+    <a href="ans.html"
+        class="fixed top-5 left-5 z-50 bg-white bg-opacity-70 hover:bg-opacity-100 text-rose-800 font-semibold px-4 py-2 rounded-full shadow-md transition">
+    ⬅ กลับ
+    </a>
+
+
+    <!-- Box 1 and Box 2 -->
+    <div class="content-container z-10 flex justify-between space-x-12">
+        <div class="box">
+            <a href="calender.html" class="flex flex-col justify-center items-center">
+                <span class="emoji">🩷</span>
+                <h3 class="text-xl pacifico text-rose-800 mt-2">Memory 24 months</h3>
+            </a>
+        </div>
+        <div class="box2">
+            <a href="message.html" class="flex flex-col justify-center items-center">
+                <span class="emoji">💐</span>
+                <h3 class="text-xl pacifico text-rose-800 mt-2">message for you</h3>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

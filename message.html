@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my love</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;400;600&family=Sriracha&family=Itim&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Mali', cursive;
+            background-color: #ffefef;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom right, #ffefef, #ffd1d1);
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0.3;
+            color: #ff4d6d;
+            font-size: 1.5rem;
+            animation: float 15s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px;
+        }
+
+        .letter {
+            width: 350px;
+            height: 500px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1.5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .letter.open {
+            transform: rotateY(180deg);
+        }
+
+        .letter-front,
+        .letter-inside {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter-front {
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transform: rotateY(0deg);
+           
+            background-size: 50px;
+            background-repeat: repeat;
+        }
+
+        .letter-front::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            border: 3px dashed #ff8fa3;
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .letter-front::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.5);
+            z-index: 2;
+        }
+
+        .letter-front-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: rgb(94, 9, 50);
+    font-family: 'Sriracha', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: block; /* เพิ่มเพื่อให้ข้อความอยู่ในบรรทัดใหม่ */
+    white-space: normal; /* ปรับไม่ให้ข้อความถูกบีบอยู่ในบรรทัดเดียว */
+}
+
+.letter-inside p {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-family: 'Mali', cursive;
+    font-size: 14px;
+    white-space: normal; /* ปรับให้ข้อความยาวลงมาในบรรทัดใหม่ */
+}
+
+
+        .envelope-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .envelope-decoration::before,
+        .envelope-decoration::after {
+            content: '❤';
+            position: absolute;
+            color: rgba(255, 77, 109, 0.2);
+            font-size: 36px;
+        }
+
+        .envelope-decoration::before {
+            top: 20px;
+            left: 20px;
+        }
+
+        .envelope-decoration::after {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .letter-inside {
+
+            height: 550px;
+            width: 600px;
+            background-color: #ffecf1;
+            padding: 20px;
+            border-radius: 20px;
+            transform: rotateY(180deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            background-image: linear-gradient(to bottom, #ffecf1, #ffecf1),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M25,10 Q32.5,17.5 40,25 T25,40 T10,25 T25,10" stroke="%23ffccdd" fill="none" stroke-width="1" /></svg>');
+            background-size: cover, 100px;
+            background-repeat: no-repeat, repeat;
+            background-position: center, center;
+            background-blend-mode: overlay;
+        }
+
+        .letter-message h2 {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            font-family: 'Itim', cursive;
+            text-align: center;
+            font-size: 20px;
+            text-shadow: 0 1px 1px rgba(255, 77, 109, 0.3);
+        }
+
+        .letter-inside p.signature {
+            font-family: 'Sriracha', cursive;
+            font-size: 22px;
+            color: #ff4d6d;
+            margin-top: 25px;
+        }
+
+        .letter-inside p.love {
+            font-family: 'Mali', cursive;
+            font-weight: 600;
+            font-size: 18px;
+            color: #ff6b8b;
+        }
+
+        .letter-inside-decoration {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #ff8fa3;
+            font-size: 28px;
+        }
+
+        .hearts-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .hearts-border .corner-heart {
+            position: absolute;
+            font-size: 18px;
+            color: #ff8fa3;
+        }
+
+        .hearts-border .corner-heart:nth-child(1) {
+            top: 15px;
+            left: 15px;
+        }
+
+        .hearts-border .corner-heart:nth-child(2) {
+            top: 15px;
+            right: 15px;
+        }
+
+        .hearts-border .corner-heart:nth-child(3) {
+            bottom: 15px;
+            left: 15px;
+        }
+
+        .hearts-border .corner-heart:nth-child(4) {
+            bottom: 15px;
+            right: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .letter {
+                width: 320px;
+                height: 450px;
+            }
+
+            .letter-inside h2 {
+                font-size: 24px;
+            }
+
+            .letter-inside p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="hearts"></div>
+
+    <div class="container">
+        <div class="letter">
+            <div class="letter-front">
+                <div class="envelope-decoration"></div>
+                <div class="letter-front-text">คลิกเพื่อเปิดอ่าน</div>
+            </div>
+            <div class="letter-inside">
+
+                <div class="letter-message">
+                    <h2>Happy Anniversary 2 years</h2>
+                    <p class="love">My love</p>
+                    <p>สองปีที่เรามีกันและกัน… ตั้งแต่วันที่เธอก้าวเข้ามาในชีวิตเค้า ทุกวันก็กลายเป็นวันที่มีความหมายมากขึ้น
+
+                        เราต่างเติบโตไปพร้อมกัน ผ่านเสียงหัวเราะ น้ำตา และช่วงเวลาที่ทั้งดีและไม่ดี
+                        เธอทำให้โลกของเค้ารู้สึกปลอดภัย
+                        เธอทำให้ความรักเป็นสิ่งที่เรียบง่าย งดงาม และจริงแท้
+
+                        เค้าอยากให้เธอรู้ว่า ความรักที่เค้ามีให้เธอไม่เคยลดลงเลย
+                        ไม่ว่าเราจะเจอกับอะไรในวันข้างหน้า ขอแค่เรายังจับมือกันแน่น คอยเป็นแรงใจให้กันเสมอ
+                        เค้าจะรักเธอ และจะซื่อสัตย์ต่อเธอ ด้วยหัวใจทั้งหมดที่เค้ามี
+
+                        ขอบคุณที่รักเค้าในแบบที่เค้าเป็น
+                        ขอบคุณที่อยู่เคียงข้าง สนับสนุน และไม่เคยปล่อยมือ
+                        เค้ารักเธอ...รักด้วยความรักทั้งหมดที่เค้าจะมีให้ใครสักคนได้
+
+                        สุขสันต์วันครบรอบ 2 ปีนะที่รัก
+                        ขอให้เรามีวันแบบนี้ไปอีกนานแสนนาน และจับมือกันไปตลอดเลยน้าาาา</p>
+                    <p class="signature">Lek</p>
+                </div>
+                <div class="letter-inside-decoration">❤️</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // สร้างหัวใจลอย
+        function createHearts() {
+            const heartsContainer = document.querySelector('.hearts');
+            const heartCount = 40;
+            const heartSymbols = ['❤', '♥', '💕', '💓', '💗'];
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heart.style.opacity = Math.random() * 0.3;
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // เปิด/ปิดจดหมาย
+        function setupLetter() {
+            const letter = document.querySelector('.letter');
+
+            letter.addEventListener('click', function () {
+                this.classList.toggle('open');
+            });
+        }
+
+        // เริ่มการทำงาน
+        window.onload = function () {
+            createHearts();
+            setupLetter();
+        };
+    </script>
+</body>
+
+</html>

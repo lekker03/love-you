@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poetsen+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ใช้ชื่อฟอนต์ตามที่เรียกใน HTML */
+        .poetsen-one {
+            font-family: "Poetsen One", sans-serif;
+        }
+
+        .pacifico {
+            font-family: "Pacifico", cursive;
+        }
+
+        /* การเพิ่มแอนิเมชันการเข้า */
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0 h-screen w-screen flex items-center justify-center overflow-hidden relative">
+    <!-- Background Image -->
+    <img src="/3.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-0">
+
+    <!-- Text and Button -->
+    <div class="text-center z-10 text-white fade-in">
+        <h1 class="text-5xl poetsen-one mb-4">HAPPY ANNIVERSARY 2 YEARS 🩷</h1>
+        <h3 class="text-2xl mt-2 pacifico">- 10 05 68 -</h3>
+        <a href="main.html" class="mt-10 inline-block px-6 py-2 bg-red-500 text-white rounded text-center transform hover:bg-red-600 hover:scale-105 transition duration-300 ease-in-out">
+            Start!!
+        </a>
+    </div>
+</body>
+
+</html>
